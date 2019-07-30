@@ -292,7 +292,7 @@
 
                     sysled {
                         reg = <0>;
-                        label = "status:blue:live";
+                        label = "status";
                         linux,default-trigger = "heartbeat";
                     };
                 };
