@@ -6,48 +6,48 @@
 #include <linux/leds.h>
 
 struct attiny {
-	struct device *dev;
-	struct i2c_client *client;
+    struct device *dev;
+    struct i2c_client *client;
 
-	struct mutex lock;
+    struct mutex lock;
 
-	unsigned long id;
-	uint8_t mode;
+    unsigned long id;
+    uint8_t mode;
 };
 
 /*
  * LEDs subdevice platform data
  */
 struct attiny_led_platform_data {
-	int id;
-	const char *name;
-	const char *default_trigger;
+    int id;
+    const char *name;
+    const char *default_trigger;
 };
 
-#define MAX_LED_CONTROL_REGS	1
+#define MAX_LED_CONTROL_REGS    1
 
 struct attiny_leds_platform_data {
-	struct attiny_led_platform_data *led;
-	int num_leds;
-	u32 led_control[MAX_LED_CONTROL_REGS];
+    struct attiny_led_platform_data *led;
+    int num_leds;
+    u32 led_control[MAX_LED_CONTROL_REGS];
 };
 
 /*
  * GPIOs subdevice bits and masks
  */
 struct lorix_gpio_platform_data {
-	unsigned gpio_start;
-	u8 gpio_en_mask;
-	u8 gpio_pullup_mask;
+    unsigned gpio_start;
+    u8 gpio_en_mask;
+    u8 gpio_pullup_mask;
 };
 
 /*
  * MFD chip platform data
  */
 struct attiny_platform_data {
-	unsigned int flags;
+    unsigned int flags;
 
-	struct attiny_leds_platform_data *leds;
+    struct attiny_leds_platform_data *leds;
 };
 
 /*
