@@ -12,7 +12,11 @@ struct attiny {
     struct mutex lock;
 
     unsigned long id;
-    uint8_t mode;
+
+    // attiny cached values
+    void *cache;
+    // subdevice
+    struct device *machine_dev;
 };
 
 /*
