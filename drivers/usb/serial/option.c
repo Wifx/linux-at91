@@ -2121,9 +2121,10 @@ static const struct usb_device_id option_ids[] = {
 	{ USB_DEVICE_INTERFACE_CLASS(0x2cb7, 0x01a2, 0xff) },			/* Fibocom FM101-GL (laptop MBIM) */
 	{ USB_DEVICE_INTERFACE_CLASS(0x2cb7, 0x01a4, 0xff),			/* Fibocom FM101-GL (laptop MBIM) */
 	  .driver_info = RSVD(4) },
-	{ USB_DEVICE_INTERFACE_CLASS(0x1782, 0x4D10, 0xff) },			/* Fibocom L610/MC610 (PPP) */
+	{ USB_DEVICE_INTERFACE_CLASS(0x1782, 0x4D10, 0xff),			/* Fibocom L610/MC610 (PPP) */
+	  .driver_info = ZLP },
 	{ USB_DEVICE_INTERFACE_CLASS(0x1782, 0x4D11, 0xff),			/* Fibocom L610/MC610 (ECM) */
-	  .driver_info = RSVD(4) },
+	  .driver_info = RSVD(4), ZLP },
 	{ USB_DEVICE_INTERFACE_CLASS(0x2df3, 0x9d03, 0xff) },			/* LongSung M5710 */
 	{ USB_DEVICE_INTERFACE_CLASS(0x305a, 0x1404, 0xff) },			/* GosunCn GM500 RNDIS */
 	{ USB_DEVICE_INTERFACE_CLASS(0x305a, 0x1405, 0xff) },			/* GosunCn GM500 MBIM */
@@ -2161,6 +2162,7 @@ static struct usb_serial_driver option_1port_device = {
 #ifdef CONFIG_PM
 	.suspend           = usb_wwan_suspend,
 	.resume            = usb_wwan_resume,
+	.reset_resume      = usb_wwan_resume,
 #endif
 };
 
